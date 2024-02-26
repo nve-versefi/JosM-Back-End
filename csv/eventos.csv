@@ -1,0 +1,6 @@
+color,imgSrc,title,date,description,tag,duration
+orange,../../../../assets/img/orquesta6.jpeg,Evento,20 de enero,"Lorem ipsum dolor sit amet consectetur adipisicing elit...",concierto,Reserva
+orange,https://picsum.photos/501/500,Evento,20 de enero,"Lorem ipsum dolor sit amet consectetur adipisicing elit...",concierto,Reserva
+orange,https://picsum.photos/500/501,Evento,20 de enero,"Lorem ipsum dolor sit amet consectetur adipisicing elit...",concierto,Reserva
+orange,https://picsum.photos/501/501,Evento,20 de enero,"Lorem ipsum dolor sit amet consectetur adipisicing elit...",Concierto,Reserva
+orange,../../../../assets/img/blanco.png,Evento,20 de enero,"Lorem ipsum dolor sit amet consectetur adipisicing elit...",concierto,Reserva
