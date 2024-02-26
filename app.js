@@ -13,7 +13,7 @@ app.use(cors({
 }));
 
 
-// const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 // Dynamically encode the password and build the URI
 const username = encodeURIComponent(process.env.DB_USERNAME);
