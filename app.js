@@ -6,9 +6,12 @@ const routes = require('./routes');
 const mailer = require('./mailer');
 const path = require('path'); 
 
-const app = express({
+const app = express();
+
+app.use(cors({
   origin: 'http://localhost:4200'
-});
+}));
+
 
 // const PORT = process.env.PORT || 3000;
 
