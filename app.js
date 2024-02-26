@@ -9,11 +9,14 @@ const path = require('path');
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:4200'
+  origin: 'http://localhost:4200/'
 }));
 
 
 const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 // Dynamically encode the password and build the URI
 const username = encodeURIComponent(process.env.DB_USERNAME);
@@ -42,6 +45,3 @@ app.use('/', mailer);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/galeria', express.static(path.join(__dirname, 'galeria')));
 
-app.listen(PORT, () => {
-  console.log(`Servidor en www.orquestajosm.com:${PORT}`);
-});
