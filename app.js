@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '../creds.env' });
+require('dotenv').config({ path: './creds.env' });
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -9,7 +9,7 @@ const path = require('path');
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:4200/'
+  origin: 'http://localhost:4200'
 }));
 
 
