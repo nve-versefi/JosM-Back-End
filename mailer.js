@@ -17,19 +17,19 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-
+const self = process.env.EMAIL_ACC
 router.post('/enviar-correo', async (req, res) => {
   const { name, email, phone, message } = req.body;
 
   const mailOptions1 = {
-    from: 'process.env.EMAIL_FROM',
-    to: 'process.env.EMAIL_TO',
+    from: self,
+    to: self,
     subject: 'Nuevo mensaje desde el formulario',
-    html: `Nombre: ${name}<br>Correo: ${email}<br>Mensaje: ${message}`,
+    html: `Nombre: ${name}<br>Correo: ${email}<br>Mensaje: ${message} <br>Telefono: ${phone}`,
   };
 
   const mailOptions2 = {
-    from: 'nicove21@gmail.com',
+    from: self,
     to: email,
     subject: 'Confirmación de recepción de mensaje',
     html: `Gracias por contactar con nosotros, hemos recibido tu mensaje.`,
