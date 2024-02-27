@@ -8,8 +8,13 @@ const path = require('path');
 
 const app = express();
 
-app.use(cors({
-  origin: process.env.CORS_ORIGIN
+app.use(cors((req, callback) => {
+  console.log("CORS Origin: ", process.env.CORS_ORIGIN); // Debug log
+  var corsOptions = {
+    origin: process.env.CORS_ORIGIN,
+    credentials: true,
+  };
+  callback(null, corsOptions);
 }));
 
 
