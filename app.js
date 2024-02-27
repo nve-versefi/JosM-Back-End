@@ -8,24 +8,6 @@ const path = require('path');
 
 const app = express();
 
-
-app.use(cors({
-  origin: function(origin, callback) {
-    const allowedOrigins = [
-      'https://www.orquestajosm.com',
-      'https://orquestajosm.com', 
-      'https://orquesta-josm.vercel.app',
-      'http://localhost:4200'
-    ];
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('The CORS policy for this site does not allow access from the specified Origin.'), false);
-    }
-  }
-}));
-
-
 // Dynamically encode the password and build the URI
 const username = encodeURIComponent(process.env.DB_USERNAME);
 const password = encodeURIComponent(process.env.DB_PASSWORD);
