@@ -12,7 +12,7 @@ const router = express.Router();
 
 
 
-router.post('/integrantes', async (req, res) => {
+router.post('api/integrantes', async (req, res) => {
     try {
       const nuevoIntegrante = new Integrante(req.body);
       await nuevoIntegrante.save();
@@ -24,7 +24,7 @@ router.post('/integrantes', async (req, res) => {
   });
   
   // Ruta para agregar un nuevo elemento en otra tabla
-  router.post('/directivas', async (req, res) => {
+  router.post('api/directivas', async (req, res) => {
     try {
       const nuevoElemento = new Directiva(req.body);
       await nuevoElemento.save();
@@ -35,7 +35,7 @@ router.post('/integrantes', async (req, res) => {
     }
   });
   
-  router.post('/galerias', async (req, res) => {
+  router.post('api/galerias', async (req, res) => {
     try {
       const gal = new Galeria(req.body);
       await gal.save();
@@ -50,7 +50,7 @@ router.post('/integrantes', async (req, res) => {
   
   
   // Ruta para obtener todos los integrantes
-  router.get('/integrantes', async (req, res) => {
+  router.get('api/integrantes', async (req, res) => {
     try {
       const integrantes = await Integrante.find();
       res.status(200).json(integrantes);
@@ -61,7 +61,7 @@ router.post('/integrantes', async (req, res) => {
   });
   
   // Ruta para obtener todos los elementos de otra tabla
-  router.get('/directivas', async (req, res) => {
+  router.get('api/directivas', async (req, res) => {
     try {
       const elementos = await Directiva.find();
       res.status(200).json(elementos);
@@ -72,7 +72,7 @@ router.post('/integrantes', async (req, res) => {
   });
   
   
-  router.get('/galerias', async (req, res) => {
+  router.get('api/galerias', async (req, res) => {
     try {
       const elementos = await Galeria.find();
       res.status(200).json(elementos);
@@ -83,7 +83,7 @@ router.post('/integrantes', async (req, res) => {
   });
   
   
-  router.get('/infos', async (req, res) => {
+  router.get('api/infos', async (req, res) => {
     try {
       const elementos = await Info.find();
       res.status(200).json(elementos);
@@ -94,7 +94,7 @@ router.post('/integrantes', async (req, res) => {
   });
   
     
-  router.get('/eventos', async (req, res) => {
+  router.get('api/eventos', async (req, res) => {
     try {
       const elementos = await Eventos.find();
       res.status(200).json(elementos);
@@ -118,7 +118,7 @@ router.post('/integrantes', async (req, res) => {
   
   const upload = multer({ storage: storage });
   
-  router.post('/nuevoEvento', upload.fields([{ name: 'image' }, { name: 'title' }, { name: 'date' }, { name: 'description' }, { name: 'tag' }, { name: 'duration' }]), async (req, res) => {
+  router.post('api/nuevoEvento', upload.fields([{ name: 'image' }, { name: 'title' }, { name: 'date' }, { name: 'description' }, { name: 'tag' }, { name: 'duration' }]), async (req, res) => {
     try {
       const nuevoEvento = new Eventos({
         imgSrc: req.files['image'][0].filename, 
