@@ -10,21 +10,21 @@ const app = express();
 
 
 app.use(cors({
-  origin: function(origin, callback){
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if(!origin) return callback(null, true);
-    if(['https://www.orquestajosm.com', 'www.orquestajosm.com', 'orquesta-josm.vercel.app', 'http://localhost:4200'].indexOf(origin) === -1){
-      var msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
+  origin: function(origin, callback) {
+    const allowedOrigins = [
+      'https://www.orquestajosm.com',
+      'https://orquestajosm.com', 
+      'https://orquesta-josm.vercel.app',
+      'http://localhost:4200'
+    ];
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('The CORS policy for this site does not allow access from the specified Origin.'), false);
     }
-    return callback(null, true);
   }
 }));
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
 
 // Dynamically encode the password and build the URI
 const username = encodeURIComponent(process.env.DB_USERNAME);
@@ -53,3 +53,8 @@ app.use('/', mailer);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/galeria', express.static(path.join(__dirname, 'galeria')));
 
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
